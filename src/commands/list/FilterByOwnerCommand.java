@@ -28,12 +28,14 @@ public class FilterByOwnerCommand implements Command {
             resultShell.setCommandResult("Данная команда должна содержать аргументы");
             return;
         }
+        boolean isNull = true;
         for (Product product : collectionShell.getProductList()){
             if (product.getOwner().getName().equals(option)){
                 resultShell.setCommandResult(product.toString());
+                isNull = false;
             }
         }
-        if (resultShell.getCommandResult().isEmpty()){
+        if (isNull){
             resultShell.setCommandResult("Не найдены продукты с таким владельцем");
         }
     }

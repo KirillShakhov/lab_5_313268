@@ -4,7 +4,8 @@ public class ResultShell {
     private String commandResult = "";
 
     public ResultShell(String commandResult){
-        this.commandResult = commandResult;
+        //this.commandResult = commandResult;
+        System.out.println(commandResult);
     }
 
     public ResultShell(){
@@ -12,10 +13,12 @@ public class ResultShell {
     }
 
     public String getCommandResult(){
-        return commandResult;
+        return "";
     }
 
     public void setCommandResult(String commandResult){
-        this.commandResult += commandResult + "\n";
+
+        //this.commandResult += commandResult + "\n";
+        System.out.println(commandResult);
     }
 }

@@ -1,6 +1,7 @@
 package commands.list;
 
 import classes.ProductManager;
+import commands.Execute_Stack;
 import inputoutput.ResultShell;
 import commands.Command;
 import commands.CommandManager;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class ExecuteScriptCommand implements Command {
     private CommandManager commandManager;
@@ -37,27 +39,34 @@ public class ExecuteScriptCommand implements Command {
             resultShell.setCommandResult("Файл не найден");
             return;
         }
-        while (scanner.hasNextLine()){
-            String currentCommand = scanner.nextLine();
-            List<String> commandInfo = Arrays.asList(currentCommand.split(" "));
-            CommandType currentCommandType = commandManager.getTypeByName(commandInfo.get(0));
-            System.out.println(currentCommand + " " + currentCommandType);
-            switch (currentCommandType){
-                case CLEAR:
-                    commandManager.executeCommand(commandInfo.get(0), "", resultShell);
-                    break;
-                case ARG:
-                    commandManager.executeCommand(commandInfo.get(0), commandInfo.get(1), resultShell);
-                    break;
-                case OBJECT:
-                    List<String> argList = new ArrayList<>();
-                    for (int i = 0; i < 10; i++){
-                        argList.add(scanner.nextLine());
-                    }
-                    System.out.println(argList);
-                    commandManager.executeCommand(commandInfo.get(0), productManager.createProductWithParams(argList), resultShell);
-                    break;
+        if(!Execute_Stack.arrayList.contains("execute_script " + scriptFile)) {
+            Execute_Stack.arrayList.add("execute_script " + scriptFile);
+            while (scanner.hasNextLine()) {
+                String currentCommand = scanner.nextLine();
+                List<String> commandInfo = Arrays.asList(currentCommand.split(" "));
+                CommandType currentCommandType = commandManager.getTypeByName(commandInfo.get(0));
+                System.out.println(currentCommand + " " + currentCommandType);
+                switch (currentCommandType) {
+                    case CLEAR:
+                        commandManager.executeCommand(commandInfo.get(0), "", resultShell);
+                        break;
+                    case ARG:
+                        commandManager.executeCommand(commandInfo.get(0), commandInfo.get(1), resultShell);
+                        break;
+                    case OBJECT:
+                        List<String> argList = new ArrayList<>();
+                        for (int i = 0; i < 10; i++) {
+                            argList.add(scanner.nextLine());
+                        }
+                        System.out.println(argList);
+                        commandManager.executeCommand(commandInfo.get(0), productManager.createProductWithParams(argList), resultShell);
+                        break;
+                    case SCRIPT:
+                        commandManager.executeCommand(commandInfo.get(0), commandInfo.get(1), resultShell);
+                        break;
+                }
             }
+            Execute_Stack.arrayList.remove("execute_script " + scriptFile);
         }
     }
 

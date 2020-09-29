@@ -33,13 +33,15 @@ public class FilterLessThanPartNumberCommand implements Command {
             resultShell.setCommandResult("Аргумент должен быть числом");
             throw new CommandExecutingException();
         }
+        boolean isNull = true;
         for (Product product: collectionShell.getProductList()){
             Integer currentProductPartNumber = Integer.parseInt(product.getPartNumber());
             if (currentProductPartNumber < partNumber){
                 resultShell.setCommandResult(product.toString());
+                isNull = false;
             }
         }
-        if (resultShell.getCommandResult().isEmpty()) {
+        if (isNull) {
             resultShell.setCommandResult("Не найдены продукты с номером партии меньшим заданного");
         }
     }

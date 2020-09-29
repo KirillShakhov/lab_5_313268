@@ -20,9 +20,8 @@ public class Main {
         System.out.println("Чтобы посмотреть полный список доступных команд, вызовите команду help");
         System.out.print(">");
         try {
-
             while (scanner.hasNextLine()) {
-                System.out.print("> ");
+                System.out.print(">");
                 String commandInfo = scanner.nextLine();
                 if (commandInfo.equals("")) {
                     continue;
@@ -44,7 +43,7 @@ public class Main {
                             commandManager.executeCommand(commandName, commandInfoList.get(1), resultShell);
                             break;
                     }
-                    System.out.println(resultShell.getCommandResult());
+                    //System.out.println(resultShell.getCommandResult());
                     System.out.print(">");
                 } catch (NullPointerException exception) {
                     System.out.println("Такой команды не существует");
