@@ -1,0 +1,5 @@
+{"id":0,"name":"milk","coordinates":{"x":5,"y":6},"price":200.0,"partNumber":"100000","unitOfMeasure":"LITERS","owner":{"name":"Alla","passportID":"207","eyeColor":"BLUE","nationality":"FRANCE"}}
+{"id":1,"name":"bread","coordinates":{"x":3,"y":4},"price":100.0,"partNumber":"200000","unitOfMeasure":"KILOGRAMS","owner":{"name":"Bubu","passportID":"756","eyeColor":"ORANGE","nationality":"ITALY"}}
+{"id":2,"name":"butter","coordinates":{"x":1,"y":2},"price":400.0,"partNumber":"300000","unitOfMeasure":"KILOGRAMS","owner":{"name":"Alla","passportID":"788","eyeColor":"BLUE","nationality":"FRANCE"}}
+{"id":3,"name":"sugar","coordinates":{"x":7,"y":8},"price":300.0,"partNumber":"400000","unitOfMeasure":"MILLIGRAMS","owner":{"name":"Zarina","passportID":"688","eyeColor":"BROWN","nationality":"RUSSIA"}}
+{"id":4,"name":"oil","coordinates":{"x":1,"y":2},"price":500.0,"partNumber":"500000","unitOfMeasure":"MILLILITERS","owner":{"name":"Zarina","passportID":"789","eyeColor":"BROWN","nationality":"RUSSIA"}}
