@@ -11,7 +11,7 @@ public class RefIntReader {
         Scanner sc = new Scanner(System.in);
         int result = 0;
         boolean end = false;
-        while (!end) {
+        while (!end && sc.hasNextLine()) {
             try {
                 result = Integer.parseInt(sc.nextLine().trim());
                 switch (type) {

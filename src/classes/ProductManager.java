@@ -56,7 +56,7 @@ public final class ProductManager {
     public UnitOfMeasure createUnitOfMeasure(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Выберите единицу измерения (1-килограммы, 2-литры, 3-миллилитры, 4-миллиграммы): ");
-        while (true) {
+        while (scanner.hasNextLine()) {
             switch (scanner.nextLine()){
                 case "1":
                     return UnitOfMeasure.KILOGRAMS;
@@ -71,5 +71,8 @@ public final class ProductManager {
 
             }
         }
+        System.out.println("Завершение программы");
+        System.exit(0);
+        return null;
     }
 }

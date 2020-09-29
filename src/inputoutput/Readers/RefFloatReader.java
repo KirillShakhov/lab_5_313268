@@ -11,7 +11,7 @@ public class RefFloatReader {
         System.out.print(messageForConsole);
         Float readFloat = null;
         boolean end = false;
-        while (!end) {
+        while (!end && in.hasNextLine()) {
             try {
                 readFloat = Float.parseFloat(in.nextLine().trim());
                 if (canBeNull && readFloat.equals("")) {

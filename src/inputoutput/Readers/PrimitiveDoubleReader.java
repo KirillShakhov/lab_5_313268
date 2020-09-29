@@ -13,7 +13,7 @@ public class PrimitiveDoubleReader {
         System.out.print(messageForConsole);
         Scanner sc = new Scanner(System.in);
         boolean end = false;
-        while (!end) {
+        while (!end && sc.hasNextLine()) {
             try {
                 result = Double.parseDouble(sc.nextLine().trim());
                     end = true;

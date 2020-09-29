@@ -12,7 +12,7 @@ public class RefLongReader {
         System.out.print(messageForConsole);
         Long readLong = null;
         boolean end = false;
-        while (!end) {
+        while (!end && in.hasNextLine()) {
             try {
                 readLong = Long.parseLong(in.nextLine().trim());
                 if (!canBeNull && readLong.equals("")) {

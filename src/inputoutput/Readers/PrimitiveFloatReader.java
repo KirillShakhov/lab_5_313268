@@ -12,7 +12,7 @@ public class PrimitiveFloatReader {
         Scanner sc = new Scanner(System.in);
         float result = 0;
         boolean end = false;
-        while (!end) {
+        while (!end && sc.hasNextLine()) {
             try {
                 result = Float.parseFloat(sc.nextLine().trim());
                 switch (type) {
@@ -29,7 +29,6 @@ public class PrimitiveFloatReader {
                 System.out.print("Вы должны ввести число, попробуйте снова: ");
             }
         }
-
         return result;
     }
 }

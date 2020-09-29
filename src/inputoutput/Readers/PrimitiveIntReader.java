@@ -11,7 +11,7 @@ public class PrimitiveIntReader {
         Scanner sc = new Scanner(System.in);
         int result = 0;
         boolean end = false;
-        while (!end) {
+        while (!end && sc.hasNextLine()) {
             try {
                 result = Integer.parseInt(sc.nextLine().trim());
                 switch (type) {
@@ -28,7 +28,6 @@ public class PrimitiveIntReader {
                 System.out.print("Вы должны ввести число, попробуйте снова: ");
             }
         }
-
         return result;
     }
 }

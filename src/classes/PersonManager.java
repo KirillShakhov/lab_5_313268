@@ -17,7 +17,7 @@ public class PersonManager {
     public Color createEyeColor(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Выберите цвет глаз (1-красные, 2-голубые, 3-оранжевые, 4-коричневые): ");
-        while (true) {
+        while (scanner.hasNextLine()) {
             switch (scanner.nextLine()){
                 case "1":
                     return Color.RED;
@@ -29,15 +29,17 @@ public class PersonManager {
                     return Color.BROWN;
                 default:
                     System.out.print("Необходимо выбрать из предложенных вариантов. Попробуйте снова: ");
-
             }
         }
+        System.out.println("Завершение программы");
+        System.exit(0);
+        return null;
     }
 
     public Country createNationality(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Выберите гражданство (1-российское, 2-французское, 3-индийское, 4-итальянское, 5-северокорейское): ");
-        while (true) {
+        while (scanner.hasNextLine()) {
             switch (scanner.nextLine()){
                 case "1":
                     return Country.RUSSIA;
@@ -54,5 +56,8 @@ public class PersonManager {
 
             }
         }
+        System.out.println("Завершение программы");
+        System.exit(0);
+        return null;
     }
 }

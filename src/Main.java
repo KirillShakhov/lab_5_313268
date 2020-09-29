@@ -3,6 +3,7 @@ import classes.*;
 import commands.list.*;
 import inputoutput.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class Main {
 
     private static CommandManager commandManager;
+    public static ArrayList<String> execute_stack = new ArrayList<>();
 
     public static void main(String[] args){
         loadContext();
@@ -17,34 +19,39 @@ public class Main {
         ProductManager productManager = new ProductManager();
         System.out.println("Чтобы посмотреть полный список доступных команд, вызовите команду help");
         System.out.print(">");
-        while(scanner.hasNextLine()){
-            System.out.print("> ");
-            String commandInfo = scanner.nextLine();
-            if (commandInfo.equals("")){
-                continue;
-            }
-            List<String> commandInfoList = Arrays.asList(commandInfo.split(" "));
-            ResultShell resultShell = new ResultShell();
-            String commandName = commandInfoList.get(0);
-            try{
-                switch(commandManager.getTypeByName(commandName)){
-                    case OBJECT:
-                        String serialObject = productManager.createProduct();
-                        commandManager.executeCommand(commandName, serialObject, resultShell);
-                        break;
-                    case CLEAR:
-                        commandManager.executeCommand(commandName, "", resultShell);
-                        break;
-                    case ARG:
-                    case SCRIPT:
-                        commandManager.executeCommand(commandName, commandInfoList.get(1), resultShell);
-                        break;
+        try {
+
+            while (scanner.hasNextLine()) {
+                System.out.print("> ");
+                String commandInfo = scanner.nextLine();
+                if (commandInfo.equals("")) {
+                    continue;
                 }
-                System.out.println(resultShell.getCommandResult());
-            } catch (NullPointerException exception){
-                System.out.println("Такой команды не существует");
+                List<String> commandInfoList = Arrays.asList(commandInfo.split(" "));
+                ResultShell resultShell = new ResultShell();
+                String commandName = commandInfoList.get(0);
+                try {
+                    switch (commandManager.getTypeByName(commandName)) {
+                        case OBJECT:
+                            String serialObject = productManager.createProduct();
+                            commandManager.executeCommand(commandName, serialObject, resultShell);
+                            break;
+                        case CLEAR:
+                            commandManager.executeCommand(commandName, "", resultShell);
+                            break;
+                        case ARG:
+                        case SCRIPT:
+                            commandManager.executeCommand(commandName, commandInfoList.get(1), resultShell);
+                            break;
+                    }
+                    System.out.println(resultShell.getCommandResult());
+                    System.out.print(">");
+                } catch (NullPointerException exception) {
+                    System.out.println("Такой команды не существует");
+                }
             }
         }
+        catch (Exception ignored){}
         System.out.println("Завершение работы");
     }
 
